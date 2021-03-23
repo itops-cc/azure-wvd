@@ -305,9 +305,15 @@
                     "adminPassword": "[variables('vmAdministratorPassword')]"
                 },
                 "storageProfile": {
-                    "imageReference": {
-                        "id": "[resourceId('Microsoft.Compute/galleries/images/versions', parameters('galleryName'), parameters('galleryImageDefinitionName'), parameters('galleryImageVersionName'))]"
-                    }
+          	   "osDisk": {
+            	      "createOption": "FromImage",
+            	      "managedDisk": {
+              	         "storageAccountType": "[variables('storageAccountType')]"
+            	      }
+          	   },
+          	   "imageReference": {
+            	      "id": "[parameters('rdshImageSourceId')]"
+          	   }
                 },
                 "networkProfile": {
                     "networkInterfaces": [
