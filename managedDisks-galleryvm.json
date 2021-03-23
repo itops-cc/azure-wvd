@@ -349,9 +349,6 @@
       "name": "[concat(parameters('rdshPrefix'), add(copyindex(), parameters('vmInitialNumber')))]",
       "location": "[parameters('location')]",
       "tags": "[parameters('virtualMachineTags')]",
-		"zones": [
-			"[add(1,mod(copyindex(),3))]"
-		],
       "copy": {
         "name": "rdsh-vm-loop",
         "count": "[parameters('rdshNumberOfInstances')]"
@@ -397,7 +394,7 @@
         },
         "licenseType": "Windows_Client"
       },
-      "zones": "[if(equals(parameters('availabilityOption'), 'AvailabilityZone'), array(parameters('availabilityZone')), variables('emptyArray'))]"
+      "zones": ["[add(1,mod(copyindex(),3))]"],
     },
     {
       "apiVersion": "2018-10-01",
