@@ -286,7 +286,7 @@
             "location": "[parameters('location')]",
             "tags": "[parameters('virtualMachineTags')]",
 			"zones": [
-                "[add(1,mod(copyindex(),3))]"
+                "[add(1,mod(add(parameters('vmInitialNumber'),copyindex()),3))]"
             ],
             "copy": {
                 "name": "rdsh-vm-loop",
