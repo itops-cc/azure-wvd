@@ -386,7 +386,7 @@
         },
         "licenseType": "Windows_Client"
       },
-      "zones": ["[add(1,mod(copyindex(),3))]"]
+      "zones": "[add(1,mod(copyindex(),3))]"
     },
     {
       "apiVersion": "2018-10-01",
