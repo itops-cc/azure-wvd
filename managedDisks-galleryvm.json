@@ -69,6 +69,27 @@
       },
       "defaultValue": ""
     },
+	"galleryName": {
+	  "type": "string",
+	  "metadata": {
+		"description": "(Required when vmImageType = Gallery) Gallery image Offer."
+	  },
+	  "defaultValue": ""
+	},
+	"galleryImageDefinitionName": {
+	  "type": "string",
+	  "metadata": {
+		"description": "(Required when vmImageType = Gallery) Gallery image Offer."
+	  },
+	  "defaultValue": ""
+	},
+	"galleryImageVersionName": {
+	  "type": "string",
+	  "metadata": {
+		"description": "(Required when vmImageType = Gallery) Gallery image Offer."
+	  },
+	  "defaultValue": ""
+	},
     "rdshPrefix": {
       "type": "string",
       "metadata": {
@@ -352,10 +373,8 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "[parameters('vmGalleryImagePublisher')]",
-            "offer": "[parameters('vmGalleryImageOffer')]",
-            "sku": "[parameters('vmGalleryImageSKU')]",
-            "version": "latest"
+		"id": "[resourceId('Microsoft.Compute/galleries/images/versions', parameters('galleryName'), parameters('galleryImageDefinitionName'), parameters('galleryImageVersionName'))]"
+
           },
           "osDisk": {
             "createOption": "FromImage",
